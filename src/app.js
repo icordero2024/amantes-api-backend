@@ -1,6 +1,5 @@
 /**
- * Archivo principal de la aplicación
- * Ahora incluye conexión a MongoDB
+ * Archivo principal
  */
 
 require('dotenv').config();
@@ -13,25 +12,17 @@ const connectDB = require('./config/database');
 
 const app = express();
 
-// ==========================
-// Conexión a la base de datos
-// ==========================
+// Conexión a DB
 connectDB();
 
-// ==========================
 // Middlewares
-// ==========================
 app.use(express.json());
 app.use(cors());
 
-// ==========================
 // Rutas
-// ==========================
 app.use('/api', routes);
 
-// ==========================
 // Puerto
-// ==========================
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

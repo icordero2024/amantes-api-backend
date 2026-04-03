@@ -1,17 +1,21 @@
 /**
- * Define las rutas relacionadas con "amantes"
- * Conecta endpoints con controllers
- * (Por ahora sin endpoints implementados)
+ * Rutas de Amante
+ * Conectan endpoints con el controller
  */
 
 const express = require('express');
 const router = express.Router();
 
-// const amanteController = require('../controllers/amante.controller');
+const AmanteController = require('../controllers/amante.controller');
 
-// Aquí se definirán los endpoints en el futuro
-// Ejemplo:
-// router.post('/', amanteController.create);
-// router.get('/', amanteController.findAll);
+/**
+ * Crear un amante
+ */
+router.post('/', (req, res) => AmanteController.create(req, res));
+
+/**
+ * Obtener amantes por interés
+ */
+router.get('/', (req, res) => AmanteController.getByInteres(req, res));
 
 module.exports = router;
