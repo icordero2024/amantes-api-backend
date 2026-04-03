@@ -182,3 +182,109 @@ Formato de salida:
 - Mostrar archivos creados/modificados
 - Mostrar código completo de cada uno
 - Mantener claridad y orden
+
+### PROMPT 3
+
+Actúa como un desarrollador senior especializado en Node.js, Express y arquitectura en capas.
+
+Partiendo de un proyecto que ya tiene:
+- Modelo Amante (Mongoose)
+- DTO para validación
+- Repository con métodos create y findByInteres
+- Conexión a MongoDB configurada
+
+Necesito que implementes la capa de servicios, controladores y endpoints REST respetando estrictamente la arquitectura en capas.
+
+Contexto:
+La API permite registrar perfiles de personas ("amantes") y consultarlos por interés.
+
+---
+
+1. SERVICES (services/)
+
+Crear un AmanteService que:
+
+- Use el AmanteRepository
+- Use el AmanteDTO para validar datos antes de crear registros
+
+Métodos requeridos:
+
+a) createAmante(data)
+   - Valida usando el DTO
+   - Llama al repository para guardar
+   - Retorna el resultado
+
+b) getAmantesByInteres(interes)
+   - Valida que el interés no esté vacío
+   - Llama al repository para buscar coincidencias
+   - Retorna los resultados
+
+Reglas:
+- Aquí va la lógica de negocio
+- No usar Express directamente
+
+---
+
+2. CONTROLLERS (controllers/)
+
+Crear un AmanteController que:
+
+a) create(req, res)
+   - Llama al service.createAmante
+   - Maneja errores con try/catch
+   - Retorna respuesta JSON
+
+b) getByInteres(req, res)
+   - Lee query param "interes"
+   - Llama al service.getAmantesByInteres
+   - Retorna resultados en JSON
+
+Reglas:
+- No poner lógica de negocio aquí
+- Solo manejar request/response
+
+---
+
+3. ROUTES (routes/)
+
+Actualizar o crear rutas para:
+
+- POST /amantes → crear amante
+- GET /amantes?interes=x → buscar por interés
+
+Conectar estas rutas con el controller
+
+---
+
+4. MANEJO DE ERRORES
+
+- Retornar status codes adecuados:
+  - 201 → creación exitosa
+  - 400 → errores de validación
+  - 500 → errores internos
+
+- Mensajes claros en JSON
+
+---
+
+5. INTEGRACIÓN
+
+- Asegurar que las rutas estén conectadas en app.js
+- Verificar que todo funcione correctamente
+
+---
+
+6. REGLAS IMPORTANTES
+
+- No romper la arquitectura en capas
+- No acceder al repository desde el controller directamente
+- No validar datos en el controller (usar DTO)
+- Código limpio y bien comentado
+
+---
+
+Formato de salida:
+
+- Mostrar archivos creados/modificados
+- Mostrar código completo
+- Mantener claridad y orden
