@@ -288,3 +288,93 @@ Formato de salida:
 - Mostrar archivos creados/modificados
 - Mostrar código completo
 - Mantener claridad y orden
+
+### PROMPT 4
+
+Actúa como un desarrollador senior especializado en Node.js, MongoDB y buenas prácticas de inicialización de datos.
+
+Partiendo de un backend ya funcional con:
+- Arquitectura en capas (controllers, services, repositories, models, dtos)
+- Endpoints implementados
+- Conexión a MongoDB
+
+Necesito que implementes un sistema de seed data automático y ajustes finales del proyecto.
+
+---
+
+1. SEED DATA
+
+Crear un archivo (por ejemplo: seed.js o dentro de config/) que:
+
+- Inserte automáticamente al iniciar la aplicación al menos 3-5 registros de "Amante"
+- Cada registro debe tener:
+  - nombre
+  - edad (>18)
+  - intereses variados (ej: "viajar", "leer", "cine")
+
+Reglas:
+- No duplicar datos si ya existen (verificar antes de insertar)
+- Ejecutarse automáticamente cuando el servidor inicia
+
+---
+
+2. INTEGRACIÓN
+
+Modificar app.js o el punto de arranque para:
+
+- Ejecutar el seed después de conectar a la base de datos
+- Asegurar que no bloquee el arranque del servidor
+
+---
+
+3. SCRIPTS (package.json)
+
+Asegurar que existan:
+
+- "dev": usando nodemon
+- "start": usando node
+
+Ejemplo:
+
+"scripts": {
+  "dev": "nodemon app.js",
+  "start": "node app.js"
+}
+
+---
+
+4. VARIABLES DE ENTORNO
+
+Crear un archivo .env con:
+
+- PORT=3000
+- MONGO_URI=mongodb://localhost:27017/amantesDB
+
+Asegurar que el proyecto use estas variables correctamente
+
+---
+
+5. VALIDACIÓN FINAL
+
+Asegurar que:
+
+- El proyecto corre con npm run dev
+- Se conecta a MongoDB local
+- Inserta datos automáticamente
+- Los endpoints funcionan con esos datos
+
+---
+
+6. REGLAS IMPORTANTES
+
+- No romper la arquitectura en capas
+- Mantener código limpio y modular
+- Comentar el código donde sea necesario
+
+---
+
+Formato de salida:
+
+- Mostrar archivos creados/modificados
+- Mostrar código completo
+- Explicar brevemente cómo funciona el seed
