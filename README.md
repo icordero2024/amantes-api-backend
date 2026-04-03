@@ -97,3 +97,88 @@ Formato de salida esperado:
 - No agregar frontend
 - No implementar lógica de negocio
 - No conectar aún a MongoDB
+
+### PROMPT 2
+
+Actúa como un desarrollador senior especializado en Node.js, Express, MongoDB y arquitectura en capas.
+
+Partiendo de una estructura de proyecto ya creada con carpetas: controllers, services, repositories, models, dtos, routes y config, necesito que implementes la capa de datos y validación para una entidad llamada "Amante".
+
+Contexto del proyecto:
+Se trata de una API REST para registrar y consultar perfiles de personas ("amantes ideales"), con nombre, edad e intereses.
+
+Requisitos técnicos:
+- Usar MongoDB con Mongoose
+- Mantener la arquitectura en capas ya definida
+- No implementar aún controllers ni endpoints HTTP
+
+---
+
+1. MODELO (models/)
+Crear un modelo llamado Amante usando Mongoose con las siguientes propiedades:
+
+- nombre: string, requerido
+- edad: number, requerido, debe ser mayor a 18
+- intereses: array de strings, requerido
+
+El modelo debe estar bien estructurado y preparado para escalar.
+
+---
+
+2. DTO (dtos/)
+Crear un DTO llamado AmanteDTO que:
+
+- Reciba los datos de entrada
+- Valide:
+  - nombre no vacío
+  - edad mayor a 18
+  - intereses debe ser un arreglo no vacío
+- Lance errores claros si los datos son inválidos
+
+No usar librerías externas, implementar validación manual.
+
+---
+
+3. REPOSITORY (repositories/)
+Crear un AmanteRepository que:
+
+- Contenga métodos:
+  - create(amante)
+  - findByInteres(interes)
+- Use el modelo de Mongoose
+- No tenga lógica de negocio, solo acceso a datos
+
+---
+
+4. CONFIG (config/)
+Crear archivo de conexión a MongoDB (por ejemplo database.js):
+
+- Usar mongoose.connect()
+- Leer URI desde variables de entorno (.env)
+- Exportar función para conectar la base de datos
+
+---
+
+5. INTEGRACIÓN
+
+Modificar app.js para:
+
+- Importar la conexión a la base de datos
+- Ejecutarla al iniciar el servidor
+
+---
+
+6. REGLAS IMPORTANTES
+
+- NO crear endpoints todavía
+- NO mezclar responsabilidades entre capas
+- Mantener código limpio y modular
+- Agregar comentarios explicando cada parte
+
+---
+
+Formato de salida:
+
+- Mostrar archivos creados/modificados
+- Mostrar código completo de cada uno
+- Mantener claridad y orden
