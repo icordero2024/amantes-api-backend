@@ -1,10 +1,6 @@
 /**
  * Archivo principal de la aplicación
- * Se encarga de:
- * - Configurar Express
- * - Aplicar middlewares globales
- * - Cargar variables de entorno
- * - Registrar rutas
+ * Ahora incluye conexión a MongoDB
  */
 
 require('dotenv').config();
@@ -13,22 +9,28 @@ const express = require('express');
 const cors = require('cors');
 
 const routes = require('./routes');
+const connectDB = require('./config/database');
 
 const app = express();
 
 // ==========================
-// Middlewares globales
+// Conexión a la base de datos
 // ==========================
-app.use(express.json()); // Permite recibir JSON en requests
-app.use(cors()); // Habilita CORS
+connectDB();
 
 // ==========================
-// Rutas principales
+// Middlewares
+// ==========================
+app.use(express.json());
+app.use(cors());
+
+// ==========================
+// Rutas
 // ==========================
 app.use('/api', routes);
 
 // ==========================
-// Configuración del puerto
+// Puerto
 // ==========================
 const PORT = process.env.PORT || 3000;
 
