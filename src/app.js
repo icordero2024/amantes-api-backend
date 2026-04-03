@@ -1,5 +1,5 @@
 /**
- * Archivo principal
+ * Archivo principal de la aplicación
  */
 
 require('dotenv').config();
@@ -9,24 +9,35 @@ const cors = require('cors');
 
 const routes = require('./routes');
 const connectDB = require('./config/database');
+const seedAmantes = require('./config/seed');
 
 const app = express();
 
-// Conexión a DB
-connectDB();
+// ==========================
+// Conexión a base de datos
+// ==========================
+const startServer = async () => {
+  await connectDB();
 
-// Middlewares
-app.use(express.json());
-app.use(cors());
+  // Ejecutar seed SIN bloquear la app
+  seedAmantes();
 
-// Rutas
-app.use('/api', routes);
+  // Middlewares
+  app.use(express.json());
+  app.use(cors());
 
-// Puerto
-const PORT = process.env.PORT || 3000;
+  // Rutas
+  app.use('/api', routes);
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT}`);
-});
+  // Puerto
+  const PORT = process.env.PORT || 3000;
+
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en puerto ${PORT}`);
+  });
+};
+
+// Inicializar servidor
+startServer();
 
 module.exports = app;
