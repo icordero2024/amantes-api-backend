@@ -7,25 +7,25 @@
 - Andrés Ramírez Madrigal  
 - Ignacio Cordero Chinchilla
   
-## Descripción del problema
+## Problem Description
 
-En la actualidad, muchas aplicaciones permiten conectar personas con intereses en común, sin embargo, la mayoría de estas soluciones son complejas y están altamente acopladas entre sus componentes, lo que dificulta su mantenimiento y escalabilidad.
+Currently, many applications allow people with shared interests to connect. However, most of these solutions are complex and highly coupled, making them difficult to maintain and scale.
 
-Este proyecto busca resolver de manera simplificada el problema de registrar y consultar perfiles de posibles parejas (denominados "amantes ideales") basándose en intereses específicos. La aplicación permitirá almacenar información básica de cada perfil y realizar búsquedas filtradas según intereses comunes.
+This project aims to simplify the problem of registering and querying profiles of potential partners (referred to as "ideal lovers") based on specific interests. The application will store basic information for each profile and perform filtered searches based on shared interests.
 
 ---
 
-## Introducción
+## Introduction
 
-El presente proyecto consiste en el desarrollo de una API REST utilizando Node.js y Express, siguiendo una arquitectura en capas que promueve la separación de responsabilidades y el desacople entre componentes.
+This project involves developing a REST API using Node.js and Express, following a layered architecture that promotes separation of responsibilities and decoupling between components.
 
-El sistema estará compuesto por un backend independiente encargado de gestionar la lógica del negocio y el acceso a datos mediante MongoDB, y un frontend desarrollado en React que consumirá dicha API.
+The system will consist of an independent backend responsible for managing the business logic and data access via MongoDB, and a frontend developed in React that will consume the API.
 
-Se implementarán operaciones básicas de creación y consulta de perfiles, aplicando buenas prácticas de diseño de software como el uso de DTOs para validación de datos y una estructura modular que facilite la escalabilidad y mantenimiento del sistema.
+Basic profile creation and query operations will be implemented, applying best practices in software design such as the use of DTOs for data validation and a modular structure that facilitates system scalability and maintenance.
 
-Además, todo el código será generado mediante herramientas de inteligencia artificial especializadas, documentando los prompts utilizados como parte del proceso de desarrollo.
+Furthermore, all code will be generated using specialized artificial intelligence tools, and the prompts used will be documented as part of the development process.
 
-## Promts usados
+## Prompts Used
 
 ### PROMPT 1
 
