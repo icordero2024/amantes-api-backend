@@ -2,6 +2,11 @@
 
 # API Amantes Ideal
 
+## Authors
+
+- Andrés Ramírez Madrigal  
+- Ignacio Cordero Chinchilla
+  
 ## Descripción del problema
 
 En la actualidad, muchas aplicaciones permiten conectar personas con intereses en común, sin embargo, la mayoría de estas soluciones son complejas y están altamente acopladas entre sus componentes, lo que dificulta su mantenimiento y escalabilidad.
